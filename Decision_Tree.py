@@ -3,7 +3,9 @@ from pyspark.mllib.tree import DecisionTree
 from pyspark.mllib.util import MLUtils
 
 # Load and parse the data file into an RDD of LabeledPoint.
-data = MLUtils.loadLibSVMFile(sc, 'data/mllib/sample_libsvm_data.txt')
+
+loadTrainingFilePath = sys.argv[1]
+data = MLUtils.loadLibSVMFile(sc, loadTrainingFilePath)
 # Split the data into training and test sets (30% held out for testing)
 (trainingData, testData) = data.randomSplit([0.7, 0.3])
 
